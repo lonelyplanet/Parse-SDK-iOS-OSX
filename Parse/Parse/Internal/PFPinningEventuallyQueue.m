@@ -274,11 +274,15 @@
     dispatch_sync(_synchronizationQueue, ^{
         if (operationSet != nil) {
             uuid = operationSet.uuid;
-            self->_operationSetUUIDToOperationSet[uuid] = operationSet;
+            if (uuid != nil) {
+                self->_operationSetUUIDToOperationSet[uuid] = operationSet;
+            }
         }
         if (eventuallyPin != nil) {
             uuid = eventuallyPin.operationSetUUID;
-            self->_operationSetUUIDToEventuallyPin[uuid] = eventuallyPin;
+            if (uuid != nil) {
+                self->_operationSetUUIDToEventuallyPin[uuid] = eventuallyPin;
+            }
         }
     });
     if (uuid == nil) {
